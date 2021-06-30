@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Randomizer</string>
+    <string name="upperLimit">Upper limit:</string>
+    <string name="buttonName">Roll!</string>
+    <string name="initialSeekBarValue">50</string>
+    <string name="resultHeader">Your random number is:</string>
+    <string name="preClickResultHeaderStandard">Adjust the slider and click Roll!</string>
+    <string name="preClickResultHeaderCustom">Enter custom values and click Roll!</string>
+    <string name="settings">Settings</string>
+    <string name="altModeLowerLimitText">From:</string>
+    <string name="altModeHigherLimitText">To:</string>
+    <string name="modeText">1 – 100</string>
+    <string name="modeText2">Custom</string>
+    <string name="altModeResultHeaderNoValuesError"><font fgcolor='#FFFF3B30'>Please enter a value for both boundaries.</font></string>
+    <string name="altModeResultHeaderToSmallerThanFromError"><font fgcolor='#FFFF3B30'>From is bigger than To!</font></string>
+</resources>
