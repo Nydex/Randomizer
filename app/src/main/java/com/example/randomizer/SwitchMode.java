@@ -9,7 +9,9 @@ import android.text.InputFilter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.concurrent.ThreadLocalRandom;
 
 public class SwitchMode extends AppCompatActivity {
@@ -19,22 +21,22 @@ public class SwitchMode extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mode2);
 
+        // Object instantiation:
         Button altRollButton = findViewById(R.id.rollButton);
-
-        TextView altResultHeader = findViewById(R.id.resultHeader);
-        altResultHeader.setText(R.string.preClickResultHeaderCustom);
-
+        FloatingActionButton switchModeButton = findViewById(R.id.switchModeButton);
         TextView altResult = findViewById(R.id.rollResult);
-
+        TextView altResultHeader = findViewById(R.id.resultHeader);
         EditText fromValue = findViewById(R.id.fromValue);
         EditText toValue = findViewById(R.id.toValue);
 
-        // Limiting input to 18 digits (the length of max value for Long - 1):
+        // Setting result header to show default pre-click text:
+        altResultHeader.setText(R.string.preClickResultHeaderCustom);
+
+        // Limiting user input to 18 digits (the length of max value for Long - 1):
         fromValue.setFilters(new InputFilter[]{new InputFilter.LengthFilter(18)});
         toValue.setFilters(new InputFilter[]{new InputFilter.LengthFilter(18)});
 
         // Clicking the mode change button will open back the standard mode:
-        FloatingActionButton switchModeButton = findViewById(R.id.switchModeButton);
         switchModeButton.setOnClickListener(v -> changeMode());
 
         // When the roll button is clicked we check if both from and to values are set;

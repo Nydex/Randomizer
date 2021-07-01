@@ -20,18 +20,24 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button rollButton = findViewById(R.id.rollButton);
 
+        // Object instantiation:
+        Button rollButton = findViewById(R.id.rollButton);
+        FloatingActionButton switchModeButton = findViewById(R.id.switchModeButton);
         SeekBar seekBar = findViewById(R.id.seekBar);
+        TextView result = findViewById(R.id.rollResult);
+        TextView resultHeader = findViewById(R.id.resultHeader);
+        TextView upperLimitValue = findViewById(R.id.upperLimitValue);
+
+        // Setting seek bar values:
         seekBar.setMin(1);
         seekBar.setMax(100);
         seekBar.setProgress(50);
 
-        TextView result = findViewById(R.id.rollResult);
-        TextView resultHeader = findViewById(R.id.resultHeader);
+        // Setting result header to show default pre-click text:
         resultHeader.setText(R.string.preClickResultHeaderStandard);
 
-        TextView upperLimitValue = findViewById(R.id.upperLimitValue);
+        // Setting initial upper limit value to default 50:
         upperLimitValue.setText(R.string.initialSeekBarValue);
 
         // Initializing the seek bar value and setting it to the default 50 in case
@@ -47,8 +53,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-            }
+            public void onStartTrackingTouch(SeekBar seekBar) { }
 
             @Override
             // Capturing the value the seek bar is left at and using that as upper limit:
@@ -69,7 +74,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         // Clicking the change mode button will switch to the custom mode:
-        FloatingActionButton switchModeButton = findViewById(R.id.switchModeButton);
         switchModeButton.setOnClickListener(v -> changeMode());
     }
 
