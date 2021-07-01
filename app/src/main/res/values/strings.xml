@@ -15,4 +15,5 @@
     <string name="altModeResultHeaderToSmallerThanFromError"><font fgcolor='#FFFF3B30'>From is bigger than To!</font></string>
     <string name="fromValueHint" />
     <string name="toValueHint" />
+    <string name="copyButtonText">Copy</string>
 </resources>

@@ -3,6 +3,8 @@ package com.example.randomizer;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputFilter;
@@ -23,6 +25,7 @@ public class SwitchMode extends AppCompatActivity {
 
         // Object instantiation:
         Button altRollButton = findViewById(R.id.altRollButton);
+        Button altCopyButton = findViewById(R.id.altCopyButton);
         FloatingActionButton switchModeButton = findViewById(R.id.switchModeButton);
         TextView altResult = findViewById(R.id.altRollResult);
         TextView altResultHeader = findViewById(R.id.altResultHeader);
@@ -54,6 +57,13 @@ public class SwitchMode extends AppCompatActivity {
                 long rand = ThreadLocalRandom.current().nextLong(Long.parseLong(String.valueOf(fromValue.getText())), Long.parseLong(String.valueOf(toValue.getText())) + 1);
                 altResult.setText(String.valueOf(rand));
             }
+        });
+
+        // Copying result to clipboard:
+        altCopyButton.setOnClickListener(v -> {
+            ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+            ClipData clip = ClipData.newPlainText("copy", altResult.getText());
+            clipboard.setPrimaryClip(clip);
         });
 
     }

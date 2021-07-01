@@ -3,6 +3,8 @@ package com.example.randomizer;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -23,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Object instantiation:
         Button rollButton = findViewById(R.id.rollButton);
+        Button copyButton = findViewById(R.id.copyButton);
         FloatingActionButton switchModeButton = findViewById(R.id.switchModeButton);
         SeekBar seekBar = findViewById(R.id.seekBar);
         TextView result = findViewById(R.id.rollResult);
@@ -75,6 +78,14 @@ public class MainActivity extends AppCompatActivity {
 
         // Clicking the change mode button will switch to the custom mode:
         switchModeButton.setOnClickListener(v -> changeMode());
+
+        // Copying result to clipboard:
+        copyButton.setOnClickListener(v -> {
+            ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+            ClipData clip = ClipData.newPlainText("copy", result.getText());
+            clipboard.setPrimaryClip(clip);
+        });
+
     }
 
     public void changeMode() {
