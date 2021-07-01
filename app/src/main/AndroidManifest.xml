@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Randomizer">
-        <activity android:name=".Mode2"></activity>
+<!--        <activity android:name=".Mode2"></activity>-->
         <activity android:name=".SwitchMode" />
         <activity android:name=".MainActivity">
             <intent-filter>

@@ -22,10 +22,10 @@ public class SwitchMode extends AppCompatActivity {
         setContentView(R.layout.activity_mode2);
 
         // Object instantiation:
-        Button altRollButton = findViewById(R.id.rollButton);
+        Button altRollButton = findViewById(R.id.altRollButton);
         FloatingActionButton switchModeButton = findViewById(R.id.switchModeButton);
-        TextView altResult = findViewById(R.id.rollResult);
-        TextView altResultHeader = findViewById(R.id.resultHeader);
+        TextView altResult = findViewById(R.id.altRollResult);
+        TextView altResultHeader = findViewById(R.id.altResultHeader);
         EditText fromValue = findViewById(R.id.fromValue);
         EditText toValue = findViewById(R.id.toValue);
 

@@ -13,6 +13,6 @@
     <string name="modeText2">Custom</string>
     <string name="altModeResultHeaderNoValuesError"><font fgcolor='#FFFF3B30'>Please enter a value for both boundaries.</font></string>
     <string name="altModeResultHeaderToSmallerThanFromError"><font fgcolor='#FFFF3B30'>From is bigger than To!</font></string>
-    <string name="fromValueHint">Select lower bound.</string>
-    <string name="toValueHint">Select upper bound.</string>
+    <string name="fromValueHint" />
+    <string name="toValueHint" />
 </resources>
