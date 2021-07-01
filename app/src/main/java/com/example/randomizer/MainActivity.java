@@ -13,7 +13,6 @@ import android.widget.TextView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class MainActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -71,9 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Clicking the change mode button will switch to the custom mode:
         FloatingActionButton switchModeButton = findViewById(R.id.switchModeButton);
-        switchModeButton.setOnClickListener(v -> {
-            changeMode();
-        });
+        switchModeButton.setOnClickListener(v -> changeMode());
     }
 
     public void changeMode() {
