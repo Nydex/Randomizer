@@ -16,4 +16,7 @@
     <string name="fromValueHint" />
     <string name="toValueHint" />
     <string name="copyButtonText">Copy</string>
+    <string name="historyButton">History</string>
+    <string name="initialHistoryLog">Any new rolls you make will be logged here.</string>
+    <string name="clear_log">Clear Log</string>
 </resources>

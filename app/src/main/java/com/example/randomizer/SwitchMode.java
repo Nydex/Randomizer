@@ -14,10 +14,16 @@ import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class SwitchMode extends AppCompatActivity {
 
+    StringBuilder altHistoryLogEntry = new StringBuilder();
+
+    @SuppressLint("NewApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +33,7 @@ public class SwitchMode extends AppCompatActivity {
         Button altRollButton = findViewById(R.id.altRollButton);
         Button altCopyButton = findViewById(R.id.altCopyButton);
         FloatingActionButton switchModeButton = findViewById(R.id.switchModeButton);
+        Button altHistoryButton = findViewById(R.id.altHistoryButton);
         TextView altResult = findViewById(R.id.altRollResult);
         TextView altResultHeader = findViewById(R.id.altResultHeader);
         EditText fromValue = findViewById(R.id.fromValue);
@@ -46,6 +53,9 @@ public class SwitchMode extends AppCompatActivity {
         // If at least one is empty, we show an error message
         // If From is bigger than To, we show an error message as well
         // If both are set properly, we use ThreadLocalRandom to return a random number
+        @SuppressLint({"NewApi", "LocalSuppress"})
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
+
         altRollButton.setOnClickListener(v -> {
             if (fromValue.getText().length() == 0 || toValue.getText().length() == 0) {
                 altResultHeader.setText(R.string.altModeResultHeaderNoValuesError);
@@ -56,6 +66,17 @@ public class SwitchMode extends AppCompatActivity {
                 @SuppressLint({"NewApi", "LocalSuppress"})
                 long rand = ThreadLocalRandom.current().nextLong(Long.parseLong(String.valueOf(fromValue.getText())), Long.parseLong(String.valueOf(toValue.getText())) + 1);
                 altResult.setText(String.valueOf(rand));
+
+                // Appending result to the history log:
+                altHistoryLogEntry.append("[")
+                        .append(LocalDateTime.now().format(dtf))
+                        .append("] from ")
+                        .append(fromValue.getText())
+                        .append(" to ")
+                        .append(toValue.getText())
+                        .append(" - ")
+                        .append(altResult.getText())
+                        .append("\n");
             }
         });
 
@@ -66,10 +87,18 @@ public class SwitchMode extends AppCompatActivity {
             clipboard.setPrimaryClip(clip);
         });
 
+        // History log entry:
+        altHistoryButton.setOnClickListener(v -> historyLogActivity());
+
     }
 
     public void changeMode() {
         Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void historyLogActivity() {
+        Intent intent = new Intent(this, History.class).putExtra("log", (Serializable) altHistoryLogEntry);
         startActivity(intent);
     }
 }
